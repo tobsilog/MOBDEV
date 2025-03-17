@@ -6,11 +6,11 @@
 
     <Button
         android:id="@+id/btn_back_home"
-        android:layout_width="57dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#FFA500"
-        android:text="<"
+        android:text="Back"
         android:textSize="20dp" />
 
     <TextView
