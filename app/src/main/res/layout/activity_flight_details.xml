@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Passenger Details -->
+    <TextView
+        android:id="@+id/textViewPassengerDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Passenger Details"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <!-- Seat Selection -->
+    <TextView
+        android:id="@+id/textViewSeatSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seat Selection"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <!-- Additional Services -->
+    <TextView
+        android:id="@+id/textViewAdditionalServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Services"
+        android:textSize="16sp"
+        android:textColor="#000000"/>
+
+    <!-- Proceed to Payment Button -->
+    <Button
+        android:id="@+id/buttonProceedToPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proceed to Payment"
+        android:backgroundTint="#FFA500"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

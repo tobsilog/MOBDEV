@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewAirlineName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Airline Name"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/textViewFlightNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flight Number"/>
+
+    <TextView
+        android:id="@+id/textViewDepartureTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departure Time"/>
+
+    <TextView
+        android:id="@+id/textViewArrivalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arrival Time"/>
+
+    <TextView
+        android:id="@+id/textViewDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration"/>
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"/>
+
+    <Button
+        android:id="@+id/buttonBookFlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFA500"
+        android:text="Book Flight"/>
+</LinearLayout>

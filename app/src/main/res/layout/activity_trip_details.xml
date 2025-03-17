@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trip Details"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="10dp" />
+
+    <!-- Trip Name -->
+    <TextView
+        android:id="@+id/tv_trip_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trip Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="5dp" />
+
+    <!-- Trip Date -->
+    <TextView
+        android:id="@+id/tv_trip_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="16sp" />
+
+    <!-- Trip Status -->
+    <TextView
+        android:id="@+id/tv_trip_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:paddingTop="5dp" />
+
+    <!-- Trip Type (Flight, Bus, Train, Hotel) -->
+    <TextView
+        android:id="@+id/tv_trip_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type"
+        android:textSize="16sp" />
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/btn_back_to_trips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to My Trips"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFA500" />
+
+</LinearLayout>

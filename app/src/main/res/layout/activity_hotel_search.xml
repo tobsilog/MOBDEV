@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_back_home"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#FFA500"
+        android:text="<"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/et_destination_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Destination City" />
+
+    <EditText
+        android:id="@+id/et_checkin_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Check-in Date"
+        android:focusable="false" />
+
+    <EditText
+        android:id="@+id/et_checkout_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Check-out Date"
+        android:focusable="false" />
+
+    <EditText
+        android:id="@+id/et_guests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of Guests"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_search_hotels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFA500"
+        android:text="Search Hotels" />
+
+</LinearLayout>

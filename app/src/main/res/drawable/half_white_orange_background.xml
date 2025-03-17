@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Top half (White) -->
+    <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="200dp">
+        <shape>
+            <solid android:color="#FFFFFF"/> <!-- White -->
+        </shape>
+    </item>
+
+    <!-- Bottom half (Orange) -->
+    <item android:left="0dp" android:right="0dp" android:top="200dp" android:bottom="0dp">
+        <shape>
+            <solid android:color="#FFA500"/> <!-- Orange -->
+        </shape>
+    </item>
+
+</layer-list>

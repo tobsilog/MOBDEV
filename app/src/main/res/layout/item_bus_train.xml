@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Bus/Train Name -->
+    <TextView
+        android:id="@+id/tv_bus_train_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bus/Train Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Departure & Arrival Cities -->
+    <TextView
+        android:id="@+id/tv_bus_train_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From - To" />
+
+    <!-- Departure Date -->
+    <TextView
+        android:id="@+id/tv_bus_train_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
+    <!-- Ticket Price -->
+    <TextView
+        android:id="@+id/tv_bus_train_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btn_book_bus_train"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book"
+            android:backgroundTint="#FFA500" />
+    </LinearLayout>
+</LinearLayout>
