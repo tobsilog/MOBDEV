@@ -13,10 +13,14 @@ public class Flight implements Serializable {
     private String passengerName;
     private String selectedSeat;
     private String additionalServices;
+    private String departureCity; // Added
+    private String arrivalCity;   // Added
+    private String travelDate;    // Added
 
-    // Constructor
+    // Updated Constructor to Include New Fields
     public Flight(String airlineName, String flightNumber, String departureTime, String arrivalTime,
-                  String duration, double price, String passengerName, String selectedSeat, String additionalServices) {
+                  String duration, double price, String passengerName, String selectedSeat,
+                  String additionalServices, String departureCity, String arrivalCity, String travelDate) {
         this.airlineName = airlineName;
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
@@ -26,6 +30,9 @@ public class Flight implements Serializable {
         this.passengerName = passengerName;
         this.selectedSeat = selectedSeat;
         this.additionalServices = additionalServices;
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
+        this.travelDate = travelDate;
     }
 
     // Getters
@@ -38,4 +45,9 @@ public class Flight implements Serializable {
     public String getPassengerName() { return passengerName; }
     public String getSelectedSeat() { return selectedSeat; }
     public String getAdditionalServices() { return additionalServices; }
+    public String getDepartureCity() { return departureCity; }
+    public String getArrivalCity() { return arrivalCity; }
+    public String getTravelDate() { return travelDate; }
+    public String getFlightDuration() { return duration; }
+    public String getFlightCode() { return flightNumber; } // Matches getFlightCode() in FlightDetails.java
 }

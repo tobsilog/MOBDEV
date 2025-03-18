@@ -3,7 +3,6 @@ package ph.edu.usc.monsalud_midterms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,35 +24,33 @@ public class AvailableFlights extends AppCompatActivity {
         String origin = getIntent().getStringExtra("origin");
         String destination = getIntent().getStringExtra("destination");
         String departureDate = getIntent().getStringExtra("departureDate");
-        String returnDate = getIntent().getStringExtra("returnDate");
 
         // Set up RecyclerView
         recyclerView = findViewById(R.id.recyclerViewAvailableFlights);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Sample data (you would replace this with actual flight search results)
+        // Sample data (replace with actual flight search results)
         availableFlights = new ArrayList<>();
-        availableFlights.add(new Flight("Airline A", "AA123", "10:00 AM", "12:00 PM", "2h", 300.00,
-                "John Doe", "Seat 1A", "Baggage, Meals"));
-        availableFlights.add(new Flight("Airline B", "BB456", "2:00 PM", "4:00 PM", "2h", 250.00,
-                "Jane Smith", "Seat 2B", "Meals"));
+        availableFlights.add(new Flight("Lorem Ipsum Airlines", "432GH4", "19:15", "21:45",
+                "02:35 H Non-Stop", 199.00, "Anne Williams", "Seat 1A", "Meals", "MAD", "NY", "2025-03-20"));
+
+        availableFlights.add(new Flight("SkyJet Airways", "987HJ3", "14:30", "17:00",
+                "02:30 H Non-Stop", 220.00, "Michael Reyes", "Seat 3C", "Baggage, Meals", "LAX", "JFK", "2025-03-22"));
 
         // Set up the adapter
         flightAdapter = new FlightAdapter(availableFlights);
         recyclerView.setAdapter(flightAdapter);
 
-        // Implementing the "Book Flight" button functionality
+        // Handle flight selection and navigate to FlightDetails
         flightAdapter.setOnItemClickListener(new FlightAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // Get the selected flight from the adapter
+                // Get the selected flight
                 Flight selectedFlight = availableFlights.get(position);
 
-                // Create an intent to navigate to the FlightDetails activity
+                // Create an intent to navigate to FlightDetails activity
                 Intent intent = new Intent(AvailableFlights.this, FlightDetails.class);
-
-                // Pass the selected flight to the FlightDetails activity
-                intent.putExtra("flight", selectedFlight);
+                intent.putExtra("flight", selectedFlight); // Pass the flight object
 
                 // Start the FlightDetails activity
                 startActivity(intent);

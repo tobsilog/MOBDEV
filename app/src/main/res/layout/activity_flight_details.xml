@@ -1,36 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F5F5F5"
     android:padding="16dp">
 
-    <!-- Passenger Details -->
+    <!-- Flight Details Header -->
     <TextView
-        android:id="@+id/textViewPassengerDetails"
+        android:id="@+id/textViewFlightDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Passenger Details"
-        android:textSize="16sp"
-        android:textColor="#000000"/>
+        android:text="FLIGHT DETAILS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFA500"
+        android:layout_gravity="center"
+        android:paddingBottom="8dp"/>
 
-    <!-- Seat Selection -->
     <TextView
-        android:id="@+id/textViewSeatSelection"
+        android:id="@+id/textViewFlightRoute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seat Selection"
+        android:text="Madrid - New York"
         android:textSize="16sp"
-        android:textColor="#000000"/>
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:paddingBottom="4dp"/>
 
-    <!-- Additional Services -->
     <TextView
-        android:id="@+id/textViewAdditionalServices"
+        android:id="@+id/textViewFlightDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Additional Services"
-        android:textSize="16sp"
-        android:textColor="#000000"/>
+        android:text="13.07.20 - 23.07.20"
+        android:textSize="14sp"
+        android:layout_gravity="center"
+        android:textColor="#666666"/>
+
+    <!-- Flight Details Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Departure & Arrival Cities -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/textViewDepartureCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAD"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingEnd="8dp"/>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/plane"
+                    android:contentDescription="Flight Icon"
+                    android:padding="4dp"/>
+
+                <TextView
+                    android:id="@+id/textViewArrivalCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NY"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Flight Information -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/textViewDepartureTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19:15 - 21:45"
+                    android:textSize="14sp"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:id="@+id/textViewFlightDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:35 H Non-Stop"
+                    android:textSize="14sp"
+                    android:textColor="#666666"/>
+            </LinearLayout>
+
+            <!-- Passenger Name -->
+            <TextView
+                android:id="@+id/textViewPassengerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anne Williams"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingTop="8dp"/>
+
+            <!-- Flight Code -->
+            <TextView
+                android:id="@+id/textViewFlightCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flight: 432GH4"
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Payment Section -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textViewAirlineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum Airlines"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/textViewFlightPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$199"
+                android:textSize="16sp"
+                android:textColor="#FFA500"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <!-- Proceed to Payment Button -->
     <Button
@@ -38,6 +175,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Proceed to Payment"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         android:backgroundTint="#FFA500"
         android:layout_marginTop="20dp"/>
 </LinearLayout>

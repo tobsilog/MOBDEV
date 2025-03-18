@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FlightDetails extends AppCompatActivity {
 
-    private TextView textViewPassengerDetails, textViewSeatSelection, textViewAdditionalServices;
+    private TextView textViewFlightRoute, textViewFlightDate, textViewDepartureCity, textViewArrivalCity,
+            textViewDepartureTime, textViewFlightDuration, textViewPassengerName, textViewFlightCode,
+            textViewAirlineName, textViewFlightPrice;
     private Button buttonProceedToPayment;
 
     @Override
@@ -18,34 +19,42 @@ public class FlightDetails extends AppCompatActivity {
         setContentView(R.layout.activity_flight_details);
 
         // Initialize Views
-        textViewPassengerDetails = findViewById(R.id.textViewPassengerDetails);
-        textViewSeatSelection = findViewById(R.id.textViewSeatSelection);
-        textViewAdditionalServices = findViewById(R.id.textViewAdditionalServices);
+        textViewFlightRoute = findViewById(R.id.textViewFlightRoute);
+        textViewFlightDate = findViewById(R.id.textViewFlightDate);
+        textViewDepartureCity = findViewById(R.id.textViewDepartureCity);
+        textViewArrivalCity = findViewById(R.id.textViewArrivalCity);
+        textViewDepartureTime = findViewById(R.id.textViewDepartureTime);
+        textViewFlightDuration = findViewById(R.id.textViewFlightDuration);
+        textViewPassengerName = findViewById(R.id.textViewPassengerName);
+        textViewFlightCode = findViewById(R.id.textViewFlightCode);
+        textViewAirlineName = findViewById(R.id.textViewAirlineName);
+        textViewFlightPrice = findViewById(R.id.textViewFlightPrice);
         buttonProceedToPayment = findViewById(R.id.buttonProceedToPayment);
 
-        // Get the selected flight from previous activity
-        Flight selectedFlight = (Flight) getIntent().getSerializableExtra("flight");
+        // Retrieve the flight details from intent
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("flight")) {
+            Flight selectedFlight = (Flight) intent.getSerializableExtra("flight");
 
-        // Check if the flight object is not null before accessing it
-        if (selectedFlight != null) {
-            // Populate the flight details into the TextViews
-            textViewPassengerDetails.setText("Passenger: " + selectedFlight.getPassengerName());
-            textViewSeatSelection.setText("Seat: " + selectedFlight.getSelectedSeat());
-            textViewAdditionalServices.setText("Additional Services: " + selectedFlight.getAdditionalServices());
+            if (selectedFlight != null) {
+                // Populate the flight details with actual data
+                textViewFlightRoute.setText(selectedFlight.getDepartureCity() + " - " + selectedFlight.getArrivalCity());
+                textViewFlightDate.setText(selectedFlight.getTravelDate());
+                textViewDepartureCity.setText(selectedFlight.getDepartureCity());
+                textViewArrivalCity.setText(selectedFlight.getArrivalCity());
+                textViewDepartureTime.setText(selectedFlight.getDepartureTime());
+                textViewFlightDuration.setText(selectedFlight.getFlightDuration());
+                textViewPassengerName.setText(selectedFlight.getPassengerName());
+                textViewFlightCode.setText("Flight: " + selectedFlight.getFlightCode());
+                textViewAirlineName.setText(selectedFlight.getAirlineName());
+                textViewFlightPrice.setText("$" + selectedFlight.getPrice());
+            }
         }
 
-        // Set up the button action for proceeding to payment
+        // Proceed to Payment Button Click Listener
         buttonProceedToPayment.setOnClickListener(v -> {
-            // Handle proceed to payment action
-            // Navigate to the Payment Activity or show a toast for now
-            proceedToPayment();
+            Intent paymentIntent = new Intent(this, PaymentActivity.class);
+            startActivity(paymentIntent);
         });
     }
-
-    private void proceedToPayment() {
-        // Navigate to PaymentActivity
-        Intent intent = new Intent(this, PaymentActivity.class);
-        startActivity(intent);
-    }
-
 }

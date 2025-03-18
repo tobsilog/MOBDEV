@@ -1,56 +1,71 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:elevation="2dp"
-    android:layout_marginBottom="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp">
 
-    <!-- Bus/Train Name -->
-    <TextView
-        android:id="@+id/tv_bus_train_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bus/Train Name"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <!-- Departure & Arrival Cities -->
-    <TextView
-        android:id="@+id/tv_bus_train_route"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From - To" />
-
-    <!-- Departure Date -->
-    <TextView
-        android:id="@+id/tv_bus_train_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date" />
-
-    <!-- Ticket Price -->
-    <TextView
-        android:id="@+id/tv_bus_train_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textColor="@android:color/holo_green_dark"
-        android:textStyle="bold" />
-
-    <!-- Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white">
 
-        <Button
-            android:id="@+id/btn_book_bus_train"
+        <!-- Bus/Train Name -->
+        <TextView
+            android:id="@+id/tv_bus_train_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book"
-            android:backgroundTint="#FFA500" />
+            android:text="Bus/Train Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:paddingBottom="4dp"/>
+
+        <!-- Route (From - To) -->
+        <TextView
+            android:id="@+id/tv_bus_train_route"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From - To"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingBottom="4dp"/>
+
+        <!-- Travel Date -->
+        <TextView
+            android:id="@+id/tv_bus_train_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:paddingBottom="4dp"/>
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/tv_bus_train_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <!-- Book Button -->
+        <Button
+            android:id="@+id/btn_book_bus_train"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Now"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:backgroundTint="#FFA500"
+            android:layout_marginTop="8dp"/>
+
     </LinearLayout>
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

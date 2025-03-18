@@ -22,8 +22,8 @@ public class HotelResultsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         hotelList = new ArrayList<>();
-        hotelList.add(new HotelModel("City Hotel", "₱2000 per night", "4.5 Stars"));
-        hotelList.add(new HotelModel("Beach Resort", "₱3500 per night", "5 Stars"));
+        hotelList.add(new HotelModel("City Hotel", 2000.00, 4.5f));
+        hotelList.add(new HotelModel("City Hotel", 2000.00, 4.5f));
 
         adapter = new HotelAdapter(hotelList, this);
         recyclerView.setAdapter(adapter);

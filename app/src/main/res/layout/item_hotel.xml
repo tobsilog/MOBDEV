@@ -1,46 +1,95 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:elevation="2dp"
-    android:layout_marginBottom="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp">
 
-    <!-- Hotel Name -->
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hotel Name"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/white">
 
-    <!-- Hotel Price -->
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textColor="@android:color/holo_green_dark"
-        android:textStyle="bold" />
+        <!-- Hotel Image -->
+        <ImageView
+            android:id="@+id/iv_hotel_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hotel"
+            android:contentDescription="Hotel Image"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginBottom="8dp"/>
 
-    <!-- Hotel Rating -->
-    <TextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold" />
+        <!-- Hotel Name -->
+        <TextView
+            android:id="@+id/tv_hotel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hotel Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:paddingBottom="4dp"/>
 
-    <!-- Book Button -->
-    <Button
-        android:id="@+id/btn_book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Book Now"
-        android:backgroundTint="#FFA500"
-        />
+        <!-- Rating & Price -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
 
-</LinearLayout>
+            android:paddingBottom="8dp">
+
+            <!-- Rating -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/star"
+                    android:contentDescription="Rating Icon"
+                    android:tint="@android:color/holo_orange_light"/>
+
+                <TextView
+                    android:id="@+id/tv_hotel_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:paddingStart="4dp"/>
+            </LinearLayout>
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/tv_hotel_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$120 / night"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFA500"/>
+        </LinearLayout>
+
+        <!-- Book Button -->
+        <Button
+            android:id="@+id/btn_book_hotel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book Now"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:backgroundTint="#FFA500"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

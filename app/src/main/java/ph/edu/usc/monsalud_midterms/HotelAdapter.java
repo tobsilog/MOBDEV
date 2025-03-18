@@ -11,9 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-import ph.edu.usc.monsalud_midterms.BookingDetailsActivity;
-import ph.edu.usc.monsalud_midterms.HotelModel;
-
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> {
     private List<HotelModel> list;
     private Context context;
@@ -33,15 +30,15 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HotelModel model = list.get(position);
-        holder.tvName.setText(model.getName());
-        holder.tvPrice.setText("Price: " + model.getPrice());
-        holder.tvRating.setText("Rating: " + model.getRating());
+        holder.tvHotelName.setText(model.getName());
+        holder.tvHotelPrice.setText(model.getFormattedPrice());  // Uses formatted price
+        holder.tvHotelRating.setText(model.getFormattedRating());  // Uses formatted rating
 
-        holder.btnBook.setOnClickListener(v -> {
+        holder.btnBookHotel.setOnClickListener(v -> {
             Intent intent = new Intent(context, BookingDetailsActivity.class);
             intent.putExtra("name", model.getName());
-            intent.putExtra("price", model.getPrice());
-            intent.putExtra("rating", model.getRating());
+            intent.putExtra("price", model.getPrice());  // Still sends double value
+            intent.putExtra("rating", model.getRating());  // Still sends float value
             context.startActivity(intent);
         });
     }
@@ -52,15 +49,15 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvPrice, tvRating;
-        Button btnBook;
+        TextView tvHotelName, tvHotelPrice, tvHotelRating;
+        Button btnBookHotel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_name);
-            tvPrice = itemView.findViewById(R.id.tv_price);
-            tvRating = itemView.findViewById(R.id.tv_rating);
-            btnBook = itemView.findViewById(R.id.btn_book);
+            tvHotelName = itemView.findViewById(R.id.tv_hotel_name);
+            tvHotelPrice = itemView.findViewById(R.id.tv_hotel_price);
+            tvHotelRating = itemView.findViewById(R.id.tv_hotel_rating);
+            btnBookHotel = itemView.findViewById(R.id.btn_book_hotel);
         }
     }
 }

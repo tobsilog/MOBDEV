@@ -33,13 +33,13 @@
             android:id="@+id/rb_gcash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gcash" />
+            android:text="E-wallet" />
 
         <RadioButton
             android:id="@+id/rb_cod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cash on Delivery" />
+            android:text="Cash" />
     </RadioGroup>
 
     <Button
