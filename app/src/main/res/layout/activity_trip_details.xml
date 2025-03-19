@@ -40,7 +40,6 @@
         android:text="Status"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_blue_dark"
         android:paddingTop="5dp" />
 
     <!-- Trip Type (Flight, Bus, Train, Hotel) -->

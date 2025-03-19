@@ -35,7 +35,7 @@ public class BusTrainSearchActivity extends AppCompatActivity {
             intent.putExtra("departure", departure);
             intent.putExtra("arrival", arrival);
             intent.putExtra("date", date);
-            intent.putExtra("category", category); // Pass category again
+            intent.putExtra("category", category);
             startActivity(intent);
         });
     }
