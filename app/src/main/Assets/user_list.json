@@ -1,0 +1,26 @@
+{
+  "users":
+  [
+    {
+      "id": "1087",
+      "name": "Juan Dela Cruz",
+      "email": "j.delacruz@gmail.com",
+      "gender": "Male",
+      "phone": "09760503900"
+    },
+    {
+      "id": "1088",
+      "name": "January Toledo",
+      "email": "jtoledo@gmail.com",
+      "gender": "Female",
+      "phone": "09761333900"
+    },
+    {
+      "id": "1089",
+      "name": "Reeces Pieces",
+      "email": "R.piecies@gmail.com",
+      "gender": "Male",
+      "phone": "09231333900"
+    }
+  ]
+}
