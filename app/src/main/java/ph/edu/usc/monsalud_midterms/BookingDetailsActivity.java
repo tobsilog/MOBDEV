@@ -44,12 +44,18 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter all details", Toast.LENGTH_SHORT).show();
             } else {
                 Intent paymentIntent = new Intent(BookingDetailsActivity.this, PaymentActivity.class);
-                paymentIntent.putExtra("hotelName", hotelName);
-                paymentIntent.putExtra("hotelPrice", hotelPrice);
+
+                // 🔥 Match the format used for all trip types (Flights, Hotels, Trains, Buses)
+                paymentIntent.putExtra("tripType", "Hotel");  // Specify the trip type as Hotel
+                paymentIntent.putExtra("tripName", hotelName);  // Pass hotel name
+                paymentIntent.putExtra("tripPrice", hotelPrice);  // Pass hotel price
                 paymentIntent.putExtra("fullName", fullName);
                 paymentIntent.putExtra("contactNumber", contactNumber);
+
                 startActivity(paymentIntent);
             }
         });
+
+
     }
 }

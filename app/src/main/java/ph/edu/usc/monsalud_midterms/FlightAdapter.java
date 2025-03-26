@@ -1,6 +1,8 @@
 package ph.edu.usc.monsalud_midterms;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,18 +31,25 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     @Override
     public void onBindViewHolder(FlightViewHolder holder, int position) {
         Flight flight = flightList.get(position);
-        holder.textViewAirline.setText(flight.getAirlineName());
-        holder.textViewFlightNumber.setText(flight.getFlightNumber());
+
+        // 🔥 Ensure all TextViews are updated correctly
+        holder.textViewDepartureCity.setText(flight.getDepartureCity());
+        holder.textViewArrivalCity.setText(flight.getArrivalCity());
         holder.textViewDepartureTime.setText(flight.getDepartureTime());
         holder.textViewArrivalTime.setText(flight.getArrivalTime());
-        holder.textViewPrice.setText(String.valueOf(flight.getPrice()));
+        holder.textViewDuration.setText(flight.getFlightDuration());
+        holder.textViewPassengerName.setText(flight.getPassengerName());
+        holder.textViewFlightNumber.setText(flight.getFlightNumber());
+        holder.textViewSeatNumber.setText(flight.getSelectedSeat());
+        holder.textViewAirlineName.setText(flight.getAirlineName());
+        holder.textViewPrice.setText("$" + flight.getPrice());
 
-        // Set the "Book Flight" button listener
         holder.buttonBookFlight.setOnClickListener(v -> {
-            if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(v, position);
-            }
+            Intent intent = new Intent(v.getContext(), FlightDetails.class);
+            intent.putExtra("flight", flight); // Pass the selected flight object
+            v.getContext().startActivity(intent);
         });
+
     }
 
     @Override
@@ -51,15 +60,22 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     // ViewHolder class to hold the views
     public static class FlightViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewAirline, textViewFlightNumber, textViewDepartureTime, textViewArrivalTime, textViewPrice;
+        public TextView textViewAirlineName, textViewSeatNumber, textViewPassengerName, textViewDuration, textViewArrivalCity, textViewDepartureCity,textViewAirline, textViewFlightNumber, textViewDepartureTime, textViewArrivalTime, textViewPrice;
         public Button buttonBookFlight;
 
         public FlightViewHolder(View view) {
             super(view);
-            textViewAirline = view.findViewById(R.id.textViewAirlineName);
-            textViewFlightNumber = view.findViewById(R.id.textViewFlightNumber);
+
+            // Map XML Views to Java Variables
+            textViewDepartureCity = view.findViewById(R.id.textViewDepartureCity);
+            textViewArrivalCity = view.findViewById(R.id.textViewArrivalCity);
             textViewDepartureTime = view.findViewById(R.id.textViewDepartureTime);
             textViewArrivalTime = view.findViewById(R.id.textViewArrivalTime);
+            textViewDuration = view.findViewById(R.id.textViewDuration);
+            textViewPassengerName = view.findViewById(R.id.textViewPassengerName);
+            textViewFlightNumber = view.findViewById(R.id.textViewFlightNumber);
+            textViewSeatNumber = view.findViewById(R.id.textViewSeatNumber);
+            textViewAirlineName = view.findViewById(R.id.textViewAirlineName);
             textViewPrice = view.findViewById(R.id.textViewPrice);
             buttonBookFlight = view.findViewById(R.id.buttonBookFlight);
         }

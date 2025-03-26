@@ -51,9 +51,11 @@ public class FlightDetails extends AppCompatActivity {
             }
         }
 
-        // Proceed to Payment Button Click Listener
         buttonProceedToPayment.setOnClickListener(v -> {
             Intent paymentIntent = new Intent(this, PaymentActivity.class);
+            paymentIntent.putExtra("tripType", "Flight");
+            paymentIntent.putExtra("tripName", textViewAirlineName.getText().toString());
+            paymentIntent.putExtra("tripPrice", textViewFlightPrice.getText().toString());
             startActivity(paymentIntent);
         });
     }

@@ -1,6 +1,8 @@
 package ph.edu.usc.monsalud_midterms;
 
 import android.app.DatePickerDialog;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,7 +45,6 @@ public class FlightSearch extends AppCompatActivity {
             intent.putExtra("origin", origin);
             intent.putExtra("destination", destination);
             intent.putExtra("departureDate", departureDate);
-            intent.putExtra("returnDate", returnDate);
             startActivity(intent);
         });
     }
@@ -55,7 +56,13 @@ public class FlightSearch extends AppCompatActivity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
-            editText.setText(dayOfMonth + "/" + (month1 + 1) + "/" + year1);
+            // Format selected date as yyyy-MM-dd
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            calendar.set(year1, month1, dayOfMonth);
+            String formattedDate = sdf.format(calendar.getTime());
+
+            // Set formatted date to EditText
+            editText.setText(formattedDate);
         }, year, month, day);
         datePickerDialog.show();
     }

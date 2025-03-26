@@ -2,12 +2,18 @@ package ph.edu.usc.monsalud_midterms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AvailableFlights extends AppCompatActivity {
 
@@ -29,32 +35,66 @@ public class AvailableFlights extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewAvailableFlights);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Sample data (replace with actual flight search results)
-        availableFlights = new ArrayList<>();
-        availableFlights.add(new Flight("Lorem Ipsum Airlines", "432GH4", "19:15", "21:45",
-                "02:35 H Non-Stop", 199.00, "Anne Williams", "Seat 1A", "Meals", "MAD", "NY", "2025-03-20"));
+        // Load flights from JSON file
+        availableFlights = loadFlightsFromJSON(origin, destination, departureDate);
 
-        availableFlights.add(new Flight("SkyJet Airways", "987HJ3", "14:30", "17:00",
-                "02:30 H Non-Stop", 220.00, "Michael Reyes", "Seat 3C", "Baggage, Meals", "LAX", "JFK", "2025-03-22"));
+        Log.d("FlightSearch", "Flights in RecyclerView: " + availableFlights.size());
 
-        // Set up the adapter
+        // 🔥 Fix: Ensure adapter is always set, even if empty 🔥
         flightAdapter = new FlightAdapter(availableFlights);
         recyclerView.setAdapter(flightAdapter);
+        recyclerView.post(() -> flightAdapter.notifyDataSetChanged());
 
-        // Handle flight selection and navigate to FlightDetails
-        flightAdapter.setOnItemClickListener(new FlightAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                // Get the selected flight
-                Flight selectedFlight = availableFlights.get(position);
-
-                // Create an intent to navigate to FlightDetails activity
-                Intent intent = new Intent(AvailableFlights.this, FlightDetails.class);
-                intent.putExtra("flight", selectedFlight); // Pass the flight object
-
-                // Start the FlightDetails activity
-                startActivity(intent);
-            }
-        });
+        Log.d("RecyclerViewCheck", "Items in adapter: " + flightAdapter.getItemCount());
     }
+
+
+    private List<Flight> loadFlightsFromJSON(String origin, String destination, String departureDate) {
+        List<Flight> flightList = new ArrayList<>();
+        try {
+            InputStream is = getAssets().open("flights.json");
+            Scanner scanner = new Scanner(is, StandardCharsets.UTF_8.name());
+            String jsonString = scanner.useDelimiter("\\A").next();
+            scanner.close();
+
+            JSONArray jsonArray = new JSONArray(jsonString);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonFlight = jsonArray.getJSONObject(i);
+
+                String depCity = jsonFlight.getString("departureCity");
+                String arrCity = jsonFlight.getString("arrivalCity");
+                String travelDate = jsonFlight.getString("travelDate");
+
+                Log.d("FlightSearch", "Checking Flight: " + depCity + " -> " + arrCity + " on " + travelDate);
+
+                if (depCity.equalsIgnoreCase(origin) && arrCity.equalsIgnoreCase(destination) && travelDate.equals(departureDate)) {
+                    Flight flight = new Flight(
+                            jsonFlight.getString("airlineName"),
+                            jsonFlight.getString("flightNumber"),
+                            jsonFlight.getString("departureTime"),
+                            jsonFlight.getString("arrivalTime"),
+                            jsonFlight.getString("duration"),
+                            jsonFlight.getDouble("price"),
+                            jsonFlight.getString("passengerName"),
+                            jsonFlight.getString("selectedSeat"),
+                            jsonFlight.getString("additionalServices"),
+                            depCity,
+                            arrCity,
+                            travelDate
+                    );
+
+                    Log.d("FlightSearch", "Match Found: " + flight.getAirlineName());
+                    flightList.add(flight);
+                }
+            }
+
+            // Debug log to check how many flights matched
+            Log.d("FlightSearch", "Total Matched Flights: " + flightList.size());
+
+        } catch (Exception e) {
+            Log.e("FlightSearch", "Error loading flights", e);
+        }
+        return flightList;
+    }
+
 }
